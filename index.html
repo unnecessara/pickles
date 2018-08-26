@@ -13,6 +13,7 @@
 	 crossorigin="anonymous">
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     
     <!-- Custom -->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -24,21 +25,28 @@
         <div id="write">
             <div class="prompt"></div>
             <textarea class="input-area" rows="10" cols="80"></textarea>
-            <div class="btn-group d-block" role="group" aria-label="Options">
-                    <button type="button" id="align-left-btn" class="btn-outline-secondary btn-sm">L</button>
-                    <button type="button" id="align-center-btn" class="btn-outline-secondary btn-sm">C</button>
-                    <button type="button" id="align-right-btn" class="btn-outline-secondary btn-sm">R</button>
-                    <button type="button" id="save-btn" class="btn-outline-secondary btn-sm">Pickle me this</button>
-            </div>
-            
+            <div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-secondary btn-sm alignment-btn active">
+                        <input type="radio" value="left" autocomplete="off" checked><i class="fas fa-align-left"></i>
+                    </label>
+                    <label class="btn btn-outline-secondary btn-sm alignment-btn">
+                        <input type="radio" value="center" autocomplete="off"><i class="fas fa-align-center"></i>
+                    </label>
+                    <label class="btn btn-outline-secondary btn-sm alignment-btn">
+                        <input type="radio" value="right" autocomplete="off"><i class="fas fa-align-right"></i>
+                    </label>
+                </div>
+                <button type="button" id="save-btn" class="btn-outline-secondary btn-sm">Pickle me this</button>
+            </div> 
         </div>
         <div id="read">
             <div class="date">August 9, 2018</div>
             <div class="entry">Something something <br> cool cool <br> No pics pls</div>
             <div class="btn-group" role="group" aria-label="Options">
-                <button type="button" class="btn-outline-secondary btn-sm">P</button>
-                <button type="button" class="btn-outline-secondary btn-sm">R</button>
-                <button type="button" class="btn-outline-secondary btn-sm">E</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">P</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">R</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">E</button>
             </div>
         </div>
     </div>

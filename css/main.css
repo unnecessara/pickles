@@ -21,3 +21,7 @@
     top: 500px;
     right: 100px;
 }
+
+#save-btn {
+    vertical-align: middle;
+}

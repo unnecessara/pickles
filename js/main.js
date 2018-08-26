@@ -47,7 +47,7 @@ class PickleController {
         }
         newPickle = new Pickle(id, new Date(), input, alignment);
         this.jar.push(newPickle);
-        console.log(newPickle);
+        console.log(this.jar);
 
         //Save pickle to file
         //savePickleFile(pickle);
@@ -71,9 +71,7 @@ class UIController {
             inputArea: '.input-area',
             date: '.date',
             saveBtn: 'save-btn',
-            alignLeftBtn: 'align-left-btn',
-            alignCenterBtn: 'align-center-btn',
-            alignRightBtn: 'align-right-btn'
+            alignmentBtn: '.alignment-btn'
         }
     }
 
@@ -94,9 +92,18 @@ class UIController {
 
     }
 
+    // Change Alignment 
+    changeAlignment(mode) {
+        document.querySelector(this._DOMStrings.inputArea).style.textAlign = mode;
+    }
+
+    // Get Alignment
+    getAlignment() {
+
+    }
+
     // Set default settings
     setDefaultSettings() {
-        document.getElementById(this.DOMStrings.alignLeftBtn).classList.toggle('active');
     }
 
     // Access to DOMStrings
@@ -130,9 +137,20 @@ class Controller {
     // Set up event listeners
     setupEventListeners() {
         const DOM = this.UICtrl.DOMStrings;
+
+        // Save Button
         document.getElementById(DOM.saveBtn).addEventListener('click', () => {
             this.ctrlAddNewPickle();
         });
+
+        // Alignment Buttons
+        let alignmentButtons = document.querySelectorAll(DOM.alignmentBtn);
+        for (let i = 0; i < alignmentButtons.length; i++) {
+            alignmentButtons[i].addEventListener('click', (event) => {
+                const alignMode = event.currentTarget.childNodes[1].value;
+                this.UICtrl.changeAlignment(alignMode);
+            });
+        }
     }
 
     init() {

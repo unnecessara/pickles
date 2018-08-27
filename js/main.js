@@ -77,7 +77,9 @@ class UIController {
 
     // Get input pickle
     readInput() {
-        return [document.querySelector(this._DOMStrings.inputArea).value, 1];
+        // Get current alignment
+        const alignment = document.querySelector(this._DOMStrings.inputArea).style.textAlign;
+        return [document.querySelector(this._DOMStrings.inputArea).value, alignment];
     }
 
     // (Read mode) Show new pickle 
@@ -131,7 +133,6 @@ class Controller {
             // Tell UICtrl to update UI
             //this.UICtrl.showNewPickle();
         }
-
     }
 
     // Set up event listeners

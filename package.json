@@ -1,0 +1,23 @@
+{
+  "name": "pickles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unnecessara/pickles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unnecessara/pickles/issues"
+  },
+  "homepage": "https://github.com/unnecessara/pickles#readme",
+  "dependencies": {
+    "ejs": "^2.6.1"
+  }
+}

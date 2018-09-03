@@ -1,5 +1,5 @@
 // --------TEST--------------------
-let x = false;
+let x = true;
 document.querySelector('.btn-test').addEventListener('click', function() {
     x ? x = false : x = true;
     toggleModes();

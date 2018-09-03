@@ -25,3 +25,7 @@
 #save-btn {
     vertical-align: middle;
 }
+
+.prompt {
+    display: none;
+}

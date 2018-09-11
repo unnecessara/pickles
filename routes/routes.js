@@ -1,6 +1,7 @@
+var moment = require("moment");
+
 module.exports = {
     getHomePage: (req, res) => {
-
         // Check today's pickle (count all pickles with date newer than today)
         let hasWrittenQuery = "SELECT COUNT(*) AS count FROM `pickles` WHERE date >= CURDATE()";
         db.query(hasWrittenQuery, (err, result) => {
@@ -15,9 +16,11 @@ module.exports = {
                         if (err) {
                             console.error(err);
                         }
+                        // Show read
                         res.render('index.ejs', {
                             hasWritten: result[0].count,
-                            pickle: pickles[0]
+                            pickle: pickles[0],
+                            date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
                         });
                     });
                 } else { // Otherwise show write
@@ -26,10 +29,10 @@ module.exports = {
                     });
                 } 
             }
-        })
-
-
-        
+        }) 
+    },
+    getRandomPickle: (req, res) => {
+        // Look up JQuery's ajax stuff
     },
     addPickle: (req, res) => {
         if (req.body.content === '') {
@@ -38,15 +41,29 @@ module.exports = {
         }
         let content = req.body.content;
         let alignment = req.body.option;
+        let id = req.body.id;
 
-        let query = "INSERT INTO `pickles` (content, alignment) VALUES ('" +
-        content + "', '" + alignment + "')";
+        if (id) {
+            // Update existing pickle
+            const query = "UPDATE `pickles` SET content = '" + content + "', alignment = '" + alignment + "' WHERE id = '" + id + "'";
 
-        db.query(query, (err, result) => {
-            if (err) {
+            db.query(query, (err, result) => {
+              if (err) {
                 return res.status(500).send(err);
-            }
-            res.redirect('/');
-        });
-    }
+              }
+              res.redirect("/");
+            });
+        } else {
+            // Otherwise create new one
+            const query = "INSERT INTO `pickles` (content, alignment) VALUES ('" +
+                content + "', '" + alignment + "')";
+
+            db.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                res.redirect('/');
+            });
+        }
+    },
 };

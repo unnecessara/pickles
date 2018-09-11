@@ -23,18 +23,17 @@
     <div class="container">
         <h2>Pickles</h2>
 
-        <% if (hasWritten){ %>
-        <div id="read">
-            <div class="date">August 9, 2018</div>
-            <div class="entry"><%= pickle.content %></div>
+        <div id="read" <% if (!hasWritten){ %> style="display:none;"<% } %>>
+            <div class="date"><%= date %></div>
+            <div class="entry text-<%= pickle.alignment %>" id="entry-content" data-id="<%= pickle.id %>" data-alignment="<%= pickle.alignment %>"><%= pickle.content %></div>
             <div class="btn-group" role="group" aria-label="Options">
-                <button type="button" class="btn btn-outline-secondary btn-sm">P</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm">R</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm">E</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm prompt-btn">P</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm refresh-btn">R</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm edit-btn">E</button>
             </div>
         </div>
-        <% } else { %>
-        <div id="write">
+
+        <div id="write" <% if (hasWritten){ %> style="display:none;"<% } %>>
             <form class="add-pickle-form" action="" method="post">
                 <div class="prompt">Here a new prompt</div>
                 <textarea name="content" id="content" class="input-area" rows="10" cols="80"></textarea>
@@ -50,15 +49,12 @@
                             <input type="radio" name="option" value="right" autocomplete="off"><i class="fas fa-align-right"></i>
                         </label>
                     </div>
+                    <input type="hidden" id="entry-id" name="id" value="">
                     <button type="submit" id="save-btn" class="btn-outline-secondary btn-sm">Pickle This Please</button>
                 </div>
             </form>    
         </div>
-        <% } %>
     </div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -69,14 +65,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
  crossorigin="anonymous"></script>
 
- <script type="text/javascript">
-    const alignmentButtons = document.querySelectorAll('.alignment-btn');
-    for (let i = 0; i < alignmentButtons.length; i++) {
-        alignmentButtons[i].addEventListener('click', (event) => {
-            const alignMode = event.currentTarget.childNodes[1].value;
-            document.querySelector('.input-area').style.textAlign = alignMode;
-        });
-    }
+ <script type="text/javascript" src="assets/js/pickles.js">
+    
  </script>
 </body>
 

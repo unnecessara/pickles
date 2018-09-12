@@ -32,23 +32,21 @@ module.exports = {
         }) 
     },
     getRandomPickle: (req, res) => {
-        console.log("HERE THIS ENDPOINT RANDOM PICKLE");
         // Query database to get a random pickle
         let query = "SELECT * FROM `pickles` ORDER BY RAND() LIMIT 1";
         db.query(query, (err, pickles) => {
             if (err) {
                 console.error(err);
             }
-            
-
-            // Show read //QUESTIONABLE//
-            res.render('index.ejs', {
-                hasWritten: 1,
-                pickle: pickles[0],
-                date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
+            // Return json object with new pickle info
+            res.json({
+              hasWritten: 1,
+              pickle: pickles[0],
+              date: moment(pickles[0].date)
+                .utc()
+                .format("dddd MMMM Do YYYY")
             });
         });
-        // Look up JQuery's ajax stuff
     },
     addPickle: (req, res) => {
         if (req.body.content === '') {

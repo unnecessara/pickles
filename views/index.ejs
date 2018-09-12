@@ -24,7 +24,7 @@
         <h2>Pickles</h2>
 
         <div id="read" <% if (!hasWritten){ %> style="display:none;"<% } %>>
-            <div class="date"><%= date %></div>
+            <div class="date" id="date"><%= date %></div>
             <div class="entry text-<%= pickle.alignment %>" id="entry-content" data-id="<%= pickle.id %>" data-alignment="<%= pickle.alignment %>"><%= pickle.content %></div>
             <div class="btn-group" role="group" aria-label="Options">
                 <button type="button" class="btn btn-outline-secondary btn-sm prompt-btn">P</button>

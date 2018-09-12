@@ -1,14 +1,15 @@
 const DOM = {
     // write
-    inputArea: ".input-area",
-    alignmentBtn: ".alignment-btn",
-    entryId: "#entry-id",
+    inputArea: '.input-area',
+    alignmentBtn: '.alignment-btn',
+    entryId: '#entry-id',
 
     // read
-    promptBtn: ".prompt-btn",
-    refreshBtn: ".refresh-btn",
-    editBtn: ".edit-btn",
-    entryContent: "#entry-content"
+    promptBtn: '.prompt-btn',
+    refreshBtn: '.refresh-btn',
+    editBtn: '.edit-btn',
+    entryContent: '#entry-content',
+    date: 'date'
 };
 
 // Write block: Alignment buttons callbacks
@@ -27,12 +28,20 @@ $(DOM.promptBtn).click(event => {
 
 $(DOM.refreshBtn).click(event => {
     $.ajax({
-        url: "/random"
+        url: "/random", success: result => {
+            // Update UI parts with new pickle
+            $(DOM.entryContent).attr('data-id', result.pickle.id);
+            $(DOM.entryContent).attr('data-alignment', result.pickle.alignment);
+            $(DOM.entryContent).text(result.pickle.content);
+            $(DOM.entryContent).text(result.pickle.content);
+            $(DOM.entryContent).removeClass("text-left text-center text-right");
+            $(DOM.entryContent).addClass('text-' + result.pickle.alignment);
+            $(DOM.date).text(result.date);
+        }
     });
 });
 
 $(DOM.editBtn).click(event => {
-    console.log("EDIT BUTTON CLICKED");
     let pickleId, pickleContent, pickleAlignment;
     
     pickleId = $(DOM.entryContent).attr('data-id');

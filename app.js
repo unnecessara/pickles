@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-const {getHomePage, addPickle} = require('./routes/routes');
+const {getHomePage, addPickle, getRandomPickle} = require('./routes/routes');
 
 const port = 5000;
 
@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 // Routes
 app.get('/', getHomePage);
 app.post('/', addPickle);
+app.get('/random', getRandomPickle);
 
 // set the app to listen on the port
 app.listen(port, () => {

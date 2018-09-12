@@ -26,7 +26,9 @@ $(DOM.promptBtn).click(event => {
 });
 
 $(DOM.refreshBtn).click(event => {
-    console.log("event");
+    $.ajax({
+        url: "/random"
+    });
 });
 
 $(DOM.editBtn).click(event => {

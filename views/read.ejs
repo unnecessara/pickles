@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Pickles</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+	 crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <!-- Custom -->
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Pickles</h2>
+
+        <div id="read">
+            <div class="date" id="date"><%= date %></div>
+            
+            <div id="entry-content" class="entry text-<%= pickle.alignment %>" 
+                data-id="<%= pickle.id %>" 
+                data-alignment="<%= pickle.alignment %>">
+                    <%= pickle.content %>
+            </div>
+    
+            <div class="btn-group" role="group" aria-label="Options">
+                <button type="button" class="btn btn-outline-secondary btn-sm prompt-btn">P</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm refresh-btn">R</button>
+                <a class="btn btn-outline-secondary btn-sm edit-btn" href="/<%= pickle.id %>">E</a>
+            </div>
+        </div>
+    </div>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+ crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+ crossorigin="anonymous"></script>
+
+ <script type="text/javascript" src="assets/js/pickles.js">
+    
+ </script>
+</body>
+
+</html>

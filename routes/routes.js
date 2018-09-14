@@ -17,16 +17,13 @@ module.exports = {
                             console.error(err);
                         }
                         // Show read
-                        res.render('index.ejs', {
-                            hasWritten: result[0].count,
+                        res.render('read.ejs', {
                             pickle: pickles[0],
                             date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
                         });
                     });
                 } else { // Otherwise show write
-                    res.render('index.ejs', {
-                        hasWritten: result[0].count
-                    });
+                    res.render('write.ejs');
                 } 
             }
         }) 
@@ -40,7 +37,6 @@ module.exports = {
             }
             // Return json object with new pickle info
             res.json({
-              hasWritten: 1,
               pickle: pickles[0],
               date: moment(pickles[0].date)
                 .utc()
@@ -80,4 +76,17 @@ module.exports = {
             });
         }
     },
+    editPicklePage: (req, res) => {
+        let pickleId = req.params.id;
+        let query = "SELECT * FROM `pickles` WHERE id = '" + pickleId + "' ";
+        db.query(query, (err, pickles) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            res.render('write.ejs', {
+                pickle: pickles[0],
+                date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
+            });
+        });
+    }
 };

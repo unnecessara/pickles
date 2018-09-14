@@ -22,35 +22,32 @@
 <body>
     <div class="container">
         <h2>Pickles</h2>
-
-        <div id="read" <% if (!hasWritten){ %> style="display:none;"<% } %>>
-            <div class="date" id="date"><%= date %></div>
-            <div class="entry text-<%= pickle.alignment %>" id="entry-content" data-id="<%= pickle.id %>" data-alignment="<%= pickle.alignment %>"><%= pickle.content %></div>
-            <div class="btn-group" role="group" aria-label="Options">
-                <button type="button" class="btn btn-outline-secondary btn-sm prompt-btn">P</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm refresh-btn">R</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm edit-btn">E</button>
-            </div>
-        </div>
-
-        <div id="write" <% if (hasWritten){ %> style="display:none;"<% } %>>
+        <div id="write">
             <form class="add-pickle-form" action="" method="post">
                 <div class="prompt">Here a new prompt</div>
-                <textarea name="content" id="content" class="input-area" rows="10" cols="80"></textarea>
+                <textarea name="content" id="content" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } %>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
                 <div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-secondary btn-sm alignment-btn active">
-                            <input type="radio" name="option" value="left" autocomplete="off" checked><i class="fas fa-align-left"></i>
+                            <input type="radio" id="btn-left" name="option" value="left" autocomplete="off"><i class="fas fa-align-left"></i>
                         </label>
                         <label class="btn btn-outline-secondary btn-sm alignment-btn">
-                            <input type="radio" name="option" value="center" autocomplete="off"><i class="fas fa-align-center"></i>
+                            <input type="radio" id="btn-center" name="option" value="center" autocomplete="off"><i class="fas fa-align-center"></i>
                         </label>
                         <label class="btn btn-outline-secondary btn-sm alignment-btn">
-                            <input type="radio" name="option" value="right" autocomplete="off"><i class="fas fa-align-right"></i>
+                            <input type="radio" id="btn-right" name="option" value="right" autocomplete="off"><i class="fas fa-align-right"></i>
                         </label>
                     </div>
-                    <input type="hidden" id="entry-id" name="id" value="">
+                    <input type="hidden" id="entry-id" name="id" value=" <% if (locals.pickle) { %><%= pickle.id %><% } %> ">
                     <button type="submit" id="save-btn" class="btn-outline-secondary btn-sm">Pickle This Please</button>
+                    <button type="button" id="test" class="btn-outline-danger btn-sm">test</button>
+                    <form>
+                        <div id='type'>
+                            <input type='radio' id='radio_1' name='type' value='1' />
+                            <input type='radio' id='radio_2' name='type' value='2' />
+                            <input type='radio' id='radio_3' name='type' value='3' /> 
+                        </div>
+                    </form>
                 </div>
             </form>    
         </div>
@@ -65,8 +62,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
  crossorigin="anonymous"></script>
 
- <script type="text/javascript" src="assets/js/pickles.js">
-    
+ <script type="text/javascript" src="assets/js/pickles.js"></script>
+ <script type="text/javascript">
+    $( document ).ready(function() {
+        // const pickleAlignment = $('#content').css('text-align');
+        // console.log(pickleAlignment);
+        // const radioBtn = $('.alignment-btn input[value = '+ pickleAlignment + ']');
+        // radioBtn.prop('checked', true);
+
+        $('#test').click(e => {
+            console.log('clicked test');
+            $('#btn-right').prop("checked", true);
+            $("#radio_3").prop("checked", true);
+            //$(".alignment-btn input[value = 'right']").prop('checked', true);
+        })
+    });
  </script>
 </body>
 

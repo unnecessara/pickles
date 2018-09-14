@@ -12,16 +12,18 @@ const DOM = {
     date: 'date'
 };
 
-// Write block: Alignment buttons callbacks
+// Write: Alignment buttons callbacks
 const alignmentButtons = $(DOM.alignmentBtn);
 for (let i = 0; i < alignmentButtons.length; i++) {
     $(alignmentButtons[i]).click( event => {
         const alignMode = event.currentTarget.childNodes[1].value;
-        $(DOM.inputArea).css('text-align', alignMode);
+        $(DOM.inputArea).removeClass("text-left text-center text-right");
+        $(DOM.inputArea).addClass('text-' + alignMode);
+        //css('text-align', alignMode);
     });
 }
 
-// Read block: prompt, refresh, edit buttons callbacks 
+// Read: prompt, refresh, edit buttons callbacks 
 $(DOM.promptBtn).click(event => {
     console.log("event");
 });
@@ -37,26 +39,27 @@ $(DOM.refreshBtn).click(event => {
             $(DOM.entryContent).removeClass("text-left text-center text-right");
             $(DOM.entryContent).addClass('text-' + result.pickle.alignment);
             $(DOM.date).text(result.date);
+            $(DOM.editBtn).attr('href', '/' + result.pickle.id);
         }
     });
 });
 
-$(DOM.editBtn).click(event => {
-    let pickleId, pickleContent, pickleAlignment;
+// $(DOM.editBtn).click(event => {
+//     let pickleId, pickleContent, pickleAlignment;
     
-    pickleId = $(DOM.entryContent).attr('data-id');
-    pickleContent = $(DOM.entryContent).text();
-    pickleAlignment = $(DOM.entryContent).attr('data-alignment');
+//     pickleId = $(DOM.entryContent).attr('data-id');
+//     pickleContent = $(DOM.entryContent).text();
+//     pickleAlignment = $(DOM.entryContent).attr('data-alignment');
 
-    // In write block (hidden) set value of text area and ID to current pickle content and id
-    $(DOM.entryId).val(pickleId);
-    $(DOM.inputArea).text(pickleContent);
-    $(DOM.inputArea).css('text-align', pickleAlignment);
-    $(DOM.alignmentBtn + "input[value = "+ pickleAlignment + "]").prop("checked", true);
+//     // In write block (hidden) set value of text area and ID to current pickle content and id
+//     $(DOM.entryId).val(pickleId);
+//     $(DOM.inputArea).text(pickleContent);
+//     $(DOM.inputArea).css('text-align', pickleAlignment);
+//     $(DOM.alignmentBtn + "input[value = "+ pickleAlignment + "]").prop("checked", true);
 
-    // Hide read, show write
-    $('#read').toggle();
-    $('#write').toggle();
-});
+//     // Hide read, show write
+//     $('#read').toggle();
+//     $('#write').toggle();
+// });
 
 

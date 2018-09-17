@@ -24,12 +24,11 @@
         <h2>Pickles</h2>
         <div id="write">
             <form class="add-pickle-form" action="" method="post">
-                <div class="prompt">Here a new prompt</div>
-                <textarea name="content" id="content" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } %>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
+                <textarea name="content" id="content" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" placeholder="<% if (locals.prompt) { %><%= prompt.question %><% } %>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
                 <div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-secondary btn-sm alignment-btn active">
-                            <input type="radio" id="btn-left" name="option" value="left" autocomplete="off"><i class="fas fa-align-left"></i>
+                            <input type="radio" id="btn-left" name="option" value="left" autocomplete="off" checked><i class="fas fa-align-left"></i>
                         </label>
                         <label class="btn btn-outline-secondary btn-sm alignment-btn">
                             <input type="radio" id="btn-center" name="option" value="center" autocomplete="off"><i class="fas fa-align-center"></i>
@@ -65,6 +64,7 @@
         $('.alignment-btn').removeClass('active');
         // Add active class to the correct button
         radioBtn.parent().addClass('active');
+        radioBtn.prop('checked', true);
     });
  </script>
 </body>

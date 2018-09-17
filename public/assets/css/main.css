@@ -16,7 +16,6 @@
     padding: 50px;
 }
 
-
 .btn-test {
     position: absolute;
     top: 500px;
@@ -25,8 +24,4 @@
 
 #save-btn {
     vertical-align: middle;
-}
-
-.prompt {
-    display: none;
 }

@@ -40,14 +40,6 @@
                     </div>
                     <input type="hidden" id="entry-id" name="id" value="<% if (locals.pickle) { %><%= pickle.id %><% } %>">
                     <button type="submit" id="save-btn" class="btn-outline-secondary btn-sm">Pickle This Please</button>
-                    <button type="button" id="test" class="btn-outline-danger btn-sm">test</button>
-                    <form>
-                        <div id='type'>
-                            <input type='radio' id='radio_1' name='type' value='1' />
-                            <input type='radio' id='radio_2' name='type' value='2' />
-                            <input type='radio' id='radio_3' name='type' value='3' /> 
-                        </div>
-                    </form>
                 </div>
             </form>    
         </div>
@@ -65,17 +57,14 @@
  <script type="text/javascript" src="assets/js/pickles.js"></script>
  <script type="text/javascript">
     $( document ).ready(function() {
-        // const pickleAlignment = $('#content').css('text-align');
-        // console.log(pickleAlignment);
-        // const radioBtn = $('.alignment-btn input[value = '+ pickleAlignment + ']');
-        // radioBtn.prop('checked', true);
 
-        $('#test').click(e => {
-            console.log('clicked test');
-            $('#btn-right').prop("checked", true);
-            $("#radio_3").prop("checked", true);
-            //$(".alignment-btn input[value = 'right']").prop('checked', true);
-        })
+        const pickleAlignment = $('#content').css('text-align');
+        const radioBtn = $('.alignment-btn input[value = '+ pickleAlignment + ']');
+        
+        // Remove active class from default
+        $('.alignment-btn').removeClass('active');
+        // Add active class to the correct button
+        radioBtn.parent().addClass('active');
     });
  </script>
 </body>

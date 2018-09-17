@@ -19,7 +19,6 @@ for (let i = 0; i < alignmentButtons.length; i++) {
         const alignMode = event.currentTarget.childNodes[1].value;
         $(DOM.inputArea).removeClass("text-left text-center text-right");
         $(DOM.inputArea).addClass('text-' + alignMode);
-        //css('text-align', alignMode);
     });
 }
 

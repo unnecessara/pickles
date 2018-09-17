@@ -52,7 +52,6 @@ module.exports = {
         let content = req.body.content;
         let alignment = req.body.option;
         let id = req.body.id;
-
         if (id) {
             // Update existing pickle
             const query = "UPDATE `pickles` SET content = '" + content + "', alignment = '" + alignment + "' WHERE id = '" + id + "'";

@@ -24,7 +24,11 @@
         <h2>Pickles</h2>
         <div id="write">
             <form class="add-pickle-form" action="" method="post">
-                <textarea name="content" id="content" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" placeholder="<% if (locals.prompt) { %><%= prompt.question %><% } %>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
+                <div class="prompt text-right">
+                    <button type="button" id="prompt-refresh-btn" class="btn btn-light btn-sm"><i class="fas fa-redo"></i></button>
+                    <div id="prompt-question"></div>
+                </div>
+                <textarea name="content" id="content-area" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
                 <div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-secondary btn-sm alignment-btn active">
@@ -55,9 +59,9 @@
 
  <script type="text/javascript" src="assets/js/pickles.js"></script>
  <script type="text/javascript">
-    $( document ).ready(function() {
+    $(function() {
 
-        const pickleAlignment = $('#content').css('text-align');
+        const pickleAlignment = $('#content-area').css('text-align');
         const radioBtn = $('.alignment-btn input[value = '+ pickleAlignment + ']');
         
         // Remove active class from default

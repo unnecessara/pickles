@@ -4,11 +4,12 @@
 }
 
 /* Write styles */
-.input-area {
+#content-area {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-color: gray;
+    display: block;
 }
 
 /* Read styles */

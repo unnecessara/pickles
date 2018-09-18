@@ -22,17 +22,8 @@ module.exports = {
                             date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
                         });
                     });
-                } else { // Otherwise show write with prompt
-                    // Query database to get a random prompt
-                    let query = "SELECT * FROM `prompts` ORDER BY RAND() LIMIT 1";
-                    db.query(query, (err, prompts) => {
-                        if (err) {
-                            console.error(err);
-                        }
-                        res.render('write.ejs', {
-                            prompt: prompts[0]
-                        });
-                    });
+                } else { // Otherwise show write
+                    res.render('write.ejs');
                 } 
             }
         }) 

@@ -20,16 +20,25 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Pickles</h2>
-        <div id="write">
-            <form class="add-pickle-form" action="" method="post">
-                <div class="prompt text-right">
-                    <button type="button" id="prompt-refresh-btn" class="btn btn-light btn-sm"><i class="fas fa-redo"></i></button>
-                    <div id="prompt-question"></div>
-                </div>
-                <textarea name="content" id="content-area" class="input-area text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" rows="10" cols="80"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
-                <div>
+    <div class="container" id="write">
+        <div class="row">
+            <div class="col">
+                <h2>Pickles</h2>
+            </div>
+        </div>
+        <% if(!locals.pickle) { %>
+        <div class="row justify-content-end text-right prompt">
+            <div class="col">
+                <div id="prompt-question"></div>
+                <button type="button" id="prompt-refresh-btn" class="btn btn-light btn-sm"><i class="fas fa-redo-alt"></i></button>
+            </div>
+        </div>
+        <% } %>
+        <div class="row">
+            <div class="col">  
+                <form class="add-pickle-form" action="" method="post"> 
+                    <textarea name="content" id="content-area" class="input-area form-control text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" rows="10" cols="90"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
+
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-secondary btn-sm alignment-btn active">
                             <input type="radio" id="btn-left" name="option" value="left" autocomplete="off" checked><i class="fas fa-align-left"></i>
@@ -43,8 +52,8 @@
                     </div>
                     <input type="hidden" id="entry-id" name="id" value="<% if (locals.pickle) { %><%= pickle.id %><% } %>">
                     <button type="submit" id="save-btn" class="btn-outline-secondary btn-sm">Pickle This Please</button>
-                </div>
-            </form>    
+                </form> 
+            </div>   
         </div>
     </div>
 <script

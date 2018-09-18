@@ -4,9 +4,7 @@ class promptMachine {
     }
     getRandomQuestion() {
         const rand = Math.floor(Math.random() * this.questions.length);
-        console.log(rand);
         const newQuestion = this.questions[rand];
-        console.log(newQuestion);
         return newQuestion;
     }
 };

@@ -1,20 +1,39 @@
 .container {
     margin-top: 100px;
-    max-width: 900px;
+    max-width: 800px;
 }
 
 /* Write styles */
+
 #content-area {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-color: gray;
     display: block;
+    margin-bottom: 5px;
+}
+
+#prompt-question {
+    display: inline;
+    color: #6c757d;
+    font-size: small;
 }
 
 /* Read styles */
-.entry {
+
+#date {
+    color: #6c757d;
+    font-size: small;
+}
+
+#entry-content {
     padding: 50px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-bottom: 5px;
 }
 
 .btn-test {

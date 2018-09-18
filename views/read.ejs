@@ -19,22 +19,29 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Pickles</h2>
-
-        <div id="read">
-            <div class="date" id="date"><%= date %></div>
-            
-            <div id="entry-content" class="entry text-<%= pickle.alignment %>" 
-                data-id="<%= pickle.id %>" 
-                data-alignment="<%= pickle.alignment %>">
-                    <%= pickle.content %>
+    <div class="container" id="read">
+        <div class="row">
+            <div class="col">
+                <h2>Pickles</h2>
             </div>
-    
-            <div class="btn-group" role="group" aria-label="Options">
-                <button type="button" class="btn btn-outline-secondary btn-sm prompt-btn">P</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm refresh-btn">R</button>
-                <a class="btn btn-outline-secondary btn-sm edit-btn" href="/<%= pickle.id %>">E</a>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="date" id="date"><%= date %></div>
+                
+                <div id="entry-content" class="entry text-<%= pickle.alignment %>" 
+                    data-id="<%= pickle.id %>" 
+                    data-alignment="<%= pickle.alignment %>">
+                        <%= pickle.content %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Options">
+                    <button type="button" class="btn btn-outline-secondary btn-sm refresh-btn"><i class="fas fa-redo"></i></button>
+                    <a class="btn btn-outline-secondary btn-sm edit-btn" href="/<%= pickle.id %>"><i class="fas fa-pen"></i></a>
+                </div>
             </div>
         </div>
     </div>

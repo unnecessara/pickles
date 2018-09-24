@@ -16,6 +16,7 @@ module.exports = {
                         if (err) {
                             console.error(err);
                         }
+                        console.log(pickles[0].content);
                         // Show read
                         res.render('read.ejs', {
                             pickle: pickles[0],
@@ -54,9 +55,9 @@ module.exports = {
         let id = req.body.id;
         if (id) {
             // Update existing pickle
-            const query = "UPDATE `pickles` SET content = '" + content + "', alignment = '" + alignment + "' WHERE id = '" + id + "'";
+            const query = "UPDATE `pickles` SET content = ?, alignment = ? WHERE id = ?";
 
-            db.query(query, (err, result) => {
+            db.query(query,[content, alignment, id], (err, result) => {
               if (err) {
                 return res.status(500).send(err);
               }
@@ -64,9 +65,6 @@ module.exports = {
             });
         } else {
             // Otherwise create new one
-
-            //const query = "INSERT INTO `pickles` (content, alignment) VALUES ('" + content + "', '" + alignment + "')";
-
             const query = "INSERT INTO pickles (content, alignment) VALUES (?, ?)";
 
             db.query(query, [content, alignment], (err, result) => {

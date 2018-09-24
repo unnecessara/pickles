@@ -91,8 +91,7 @@ $(DOM.refreshBtn).click(event => {
             // Update UI parts with new pickle
             $(DOM.entryContent).attr('data-id', result.pickle.id);
             $(DOM.entryContent).attr('data-alignment', result.pickle.alignment);
-            $(DOM.entryContent).text(result.pickle.content);
-            $(DOM.entryContent).text(result.pickle.content);
+            $(DOM.entryContent).html(result.pickle.content);
             $(DOM.entryContent).removeClass("text-left text-center text-right");
             $(DOM.entryContent).addClass('text-' + result.pickle.alignment);
             $(DOM.date).text(result.date);

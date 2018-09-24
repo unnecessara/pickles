@@ -16,7 +16,7 @@ module.exports = {
                         if (err) {
                             console.error(err);
                         }
-                        console.log(pickles[0].content);
+                        pickles[0].content = pickles[0].content.replace('\n','<br>');
                         // Show read
                         res.render('read.ejs', {
                             pickle: pickles[0],
@@ -36,12 +36,11 @@ module.exports = {
             if (err) {
                 console.error(err);
             }
+            pickles[0].content = pickles[0].content.replace('\n', '<br>');
             // Return json object with new pickle info
             res.json({
               pickle: pickles[0],
-              date: moment(pickles[0].date)
-                .utc()
-                .format("dddd MMMM Do YYYY")
+              date: moment(pickles[0].date).utc().format("dddd MMMM Do YYYY")
             });
         });
     },

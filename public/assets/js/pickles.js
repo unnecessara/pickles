@@ -50,7 +50,7 @@ const DOM = {
     refreshBtn: '.refresh-btn',
     editBtn: '.edit-btn',
     entryContent: '#entry-content',
-    date: 'date'
+    date: '#date'
 };
 
 // Initialization things
@@ -68,9 +68,17 @@ for (let i = 0; i < alignmentButtons.length; i++) {
         $(DOM.inputArea).addClass('text-' + alignMode);
     });
 }
+
 $(DOM.promptRefreshBtn).click(event => {
     $(DOM.promptQuestion).text(prompts.getRandomQuestion());
 });
+
+$(DOM.promptQuestion).click(event => {
+    // Insert prompt text at the beggining of the text area
+    const newText = $(DOM.promptQuestion).text() + " " + $(DOM.inputArea).val();
+    console.log(newText);
+    $(DOM.inputArea).val(newText);
+})
 
 // Read: prompt, refresh, edit buttons callbacks 
 $(DOM.promptBtn).click(event => {

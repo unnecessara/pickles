@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 
 // Routes

@@ -64,10 +64,12 @@ module.exports = {
             });
         } else {
             // Otherwise create new one
-            const query = "INSERT INTO `pickles` (content, alignment) VALUES ('" +
-                content + "', '" + alignment + "')";
 
-            db.query(query, (err, result) => {
+            //const query = "INSERT INTO `pickles` (content, alignment) VALUES ('" + content + "', '" + alignment + "')";
+
+            const query = "INSERT INTO pickles (content, alignment) VALUES (?, ?)";
+
+            db.query(query, [content, alignment], (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
                 }

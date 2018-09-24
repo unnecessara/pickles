@@ -19,6 +19,7 @@
   "homepage": "https://github.com/unnecessara/pickles#readme",
   "dependencies": {
     "ejs": "^2.6.1",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "serve-favicon": "^2.5.0"
   }
 }

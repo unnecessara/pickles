@@ -12,6 +12,7 @@
     border-color: gray;
     display: block;
     margin-bottom: 5px;
+    padding: 20px;
 }
 
 #prompt-question {

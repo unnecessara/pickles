@@ -4,16 +4,27 @@
     font-family: 'Assistant', sans-serif;
 }
 
+#title-img {
+    width: 80px;
+    height: 120px;
+}
+
 /* Write styles */
 
 #content-area {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border-color: gray;
+    border-color: #bbb;
     display: block;
     margin-bottom: 5px;
     padding: 20px;
+}
+
+#content-area:focus {
+    outline: none !important;
+    border-color: gray;
+    box-shadow: 0 0 5px gray inset;
 }
 
 #prompt-question {

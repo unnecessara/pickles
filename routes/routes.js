@@ -20,7 +20,7 @@ module.exports = {
                         // Show read
                         res.render('read.ejs', {
                             pickle: pickles[0],
-                            date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
+                            date: moment(pickles[0].date).utc().fromNow()
                         });
                     });
                 } else { // Otherwise show write
@@ -40,7 +40,7 @@ module.exports = {
             // Return json object with new pickle info
             res.json({
               pickle: pickles[0],
-              date: moment(pickles[0].date).utc().format("dddd MMMM Do YYYY")
+                date: moment(pickles[0].date).utc().fromNow()
             });
         });
     },
@@ -82,8 +82,7 @@ module.exports = {
                 return res.status(500).send(err);
             }
             res.render('write.ejs', {
-                pickle: pickles[0],
-                date: moment(pickles[0].date).utc().format('dddd MMMM Do YYYY')
+                pickle: pickles[0]
             });
         });
     }

@@ -1,18 +1,17 @@
 <% include header.ejs %>
 <body>
-    <div class="container" id="write">
+    <div class="container main-content" id="read">
+        <img src="assets/img/picklesUp.png" id="title-img" class="rounded float-left title-img-up" alt="pickles title image">
+        <!--
         <div class="row align-items-end">
-            <div class="col">
-                <img src="assets/img/pickles1.png" id="title-img" class="rounded float-left" alt="pickles title image">
-                
-            </div>
-            <div class="col text-right">
+            <div class="col text-center">
                 <div class="date" id="date"><%= date %></div>
             </div>
         </div>
-        <div class="row">
+        -->
+        <div class="row" id="entry-content">
             <div class="col">
-                <div id="entry-content" class="entry text-<%= pickle.alignment %>" 
+                <div class="entry text-<%= pickle.alignment %>" 
                     data-id="<%= pickle.id %>" 
                     data-alignment="<%= pickle.alignment %>">
                         <%- pickle.content %>
@@ -28,6 +27,7 @@
             </div>
         </div>
     </div>
+    <% include footer.ejs %>
 <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

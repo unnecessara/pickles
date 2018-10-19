@@ -1,23 +1,12 @@
 <% include header.ejs %>
 <body>
-    <div class="container" id="write">
-        <div class="row">
-            <div class="col">
-                <img src="assets/img/pickles1.png" id="title-img" class="rounded float-left" alt="pickles title image">
-            </div>
-        </div>
-        <% if(!locals.pickle) { %>
-        <div class="row justify-content-end text-right prompt">
-            <div class="col">
-                <div id="prompt-question"></div>
-                <button type="button" id="prompt-refresh-btn" class="btn btn-light btn-sm"><i class="fas fa-redo-alt"></i></button>
-            </div>
-        </div>
-        <% } %>
+    <div class="container main-content" id="write">
+        <img src="assets/img/picklesUp.png" id="title-img" class="rounded float-left mb-1 title-img-up" alt="pickles title image">
         <div class="row">
             <div class="col">  
+                <i id="prompt-refresh-btn" class="fas fa-random"></i>
                 <form class="add-pickle-form" action="" method="post"> 
-                    <textarea name="content" id="content-area" class="input-area form-control text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" rows="10" cols="90"><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
+                    <textarea name="content" id="content-area" class="input-area form-control text-<% if (locals.pickle) { %><%= pickle.alignment %><% } else { %>left<% }%>" rows="20" cols="90" autofocus><% if (locals.pickle) { %><%= pickle.content %><% } %></textarea>
 
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-secondary btn-sm alignment-btn active">
@@ -36,6 +25,7 @@
             </div>   
         </div>
     </div>
+    <% include footer.ejs %>
 <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -50,6 +40,7 @@
  <script type="text/javascript">
     $(function() {
 
+        // Making sure the right alignment button is selected when page loads        
         const pickleAlignment = $('#content-area').css('text-align');
         const radioBtn = $('.alignment-btn input[value = '+ pickleAlignment + ']');
         

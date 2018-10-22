@@ -16,7 +16,7 @@ module.exports = {
                         if (err) {
                             console.error(err);
                         }
-                        pickles[0].content = pickles[0].content.replace('\n','<br>');
+                        pickles[0].content = pickles[0].content.replace(/\n/g, "<br>");
                         // Show read
                         res.render('read.ejs', {
                             pickle: pickles[0],
@@ -36,7 +36,7 @@ module.exports = {
             if (err) {
                 console.error(err);
             }
-            pickles[0].content = pickles[0].content.replace('\n', '<br>');
+            pickles[0].content = pickles[0].content.replace(/\n/g, "<br>");
             // Return json object with new pickle info
             res.json({
               pickle: pickles[0],
